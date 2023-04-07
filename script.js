@@ -1,13 +1,28 @@
 `use strict`;
 
-//Global Variables
+// Global Variables
 const buttonColors = ["red", "blue", "green", "yellow"];
 let gamePattern = [];
 let userClickedPattern = [];
 let started = false;
 let level = 0;
 
-//User Clicks
+// Game Start
+$(document).keypress(function () {
+  if (!started) {
+    $("#title").text("Level " + level);
+    started = true;
+  }
+});
+
+// Game Start Over
+function startOver() {
+  level = 0;
+  gamePattern = [];
+  started = false;
+}
+
+// User Clicks
 $(".btn").click(function () {
   const userChosenColor = $(this).attr("id");
   playSound(userChosenColor);
