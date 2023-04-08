@@ -11,15 +11,25 @@ let level = 0;
 $(document).keypress(function () {
   if (!started) {
     $("#title").text("Level " + level);
+    nextSequence();
     started = true;
   }
 });
 
-// Game Start Over
-function startOver() {
-  level = 0;
-  gamePattern = [];
-  started = false;
+// Next Sequence
+function nextSequence() {
+  userClickedPattern = [];
+  level++;
+  $("#title").text("Level: " + level);
+
+  let randomNumber = Math.floor(Math.random() * 4);
+  let randomChosenColor = buttonColors[randomNumber];
+  gamePattern.push(randomChosenColor);
+
+  $("#" + randomChosenColor)
+    .fadeOut(100)
+    .fadeIn(100);
+  playSound(randomChosenColor);
 }
 
 // User Clicks
@@ -40,4 +50,11 @@ function animatePress(currentColor) {
 function playSound(name) {
   let audio = new Audio("sounds/" + name + ".mp3");
   audio.play();
+}
+
+// Game Start Over
+function startOver() {
+  level = 0;
+  gamePattern = [];
+  started = false;
 }
