@@ -1,10 +1,11 @@
 body {
   text-align: center;
-  background-color: darkslategrey;
+  background-color: black;
 }
 
 #title {
-  font-size: 3rem;
+  font-family: "Stick No Bills", sans-serif;
+  font-size: 4rem;
   color: rgb(222, 118, 27);
 }
 
